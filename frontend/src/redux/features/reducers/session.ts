@@ -4,15 +4,12 @@ import { Session } from '../../../interfaces/session/interface'
 
 const initialState: Session = {
   logged: false,
-  user: {
-    data: '',
-    token: '',
-  }
+  user: {}
 }
 
 export const sessionReducer = createReducer(initialState, builder => {
   builder
-    .addCase(resetSessionReducer, (state, action) => { // assays state reset
+    .addCase(resetSessionReducer, (state, action) => {
       return initialState
     })
     .addCase(setSession, (state, action) => {

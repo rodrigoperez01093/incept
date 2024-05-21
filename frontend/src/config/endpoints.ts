@@ -11,12 +11,13 @@ interface HeadersConfigProps {
     const endpoints:any = {
         user_login: `${AUTH_SERVER}/api/v1/login/`,
         clients: `${AUTH_SERVER}/api/v1/clients/`,
+        inbound_case: `${AUTH_SERVER}/api/v1/inbound-case/`,
     }
     return endpoints[name]
 }
 
 export const headers = (): HeadersConfigProps => {
-    const token = JSON.parse(localStorage.getItem(`user${process.env.NEXT_PUBLIC_AUTH_BASE_PATH}`) ?? '').token
+    const token = JSON.parse(localStorage.getItem(`user`) ?? '').token
     return {
       headers: {
         Authorization: `JWT ${token}`
