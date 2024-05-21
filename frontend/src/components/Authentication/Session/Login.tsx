@@ -16,17 +16,15 @@ const  Login: React.FC = () => {
     password: '',
   });
   const [loadingFlag, setLoaginFlag] = useState(false)
-console.log("ruta",  endpoints('user_login'))
   const execLogIn = async(e: React.FormEvent) => {
     e.preventDefault()
     try {
         setLoaginFlag(true)
       const data = {...userData};
       const req = await axios.post(endpoints('user_login'), data);
-      console.log(req, endpoints('user_login'))
       if (typeof req.data.token === 'string' && req.data.token !== '') {
           localStorage.setItem(`logged`, 'true')
-          localStorage.setItem(`user`, JSON.stringify(req.data.data));
+          localStorage.setItem(`user`, JSON.stringify(req.data));
           dispatch(setSession(true))
           dispatch(setUser(req.data))
           setLoaginFlag(false)
@@ -37,13 +35,12 @@ console.log("ruta",  endpoints('user_login'))
       setLoaginFlag(false)
     }
   }
-  console.log(userData)
+
   return (
     <div className='w-full h-full flex flex-row items-center justify-center'>
-      <div className='relative w-1/2 h-full flex items-center border'>
-        <h1 className="absolute top-[80px] 2xl:top-[120px] left-[120px] 2xl:left-[300px] text-3xl 2xl:text-[48px] font-semibold">Bienvenido</h1>
-        
-        <form onSubmit={(e) => execLogIn(e)} className='w-[300px] 2xl:w-[400px] h-[350px] ml-[120px] 2xl:ml-[300px]'>
+      <div className='w-1/2 h-full flex flex-col items-center justify-evenly'>
+        <h1 className="text-3xl 2xl:text-[48px] font-semibold">Bienvenido</h1>
+        <form onSubmit={(e) => execLogIn(e)} className='w-[300px] 2xl:w-[400px] h-[350px] flex flex-col items-center'>
             <input
                 onChange={(e) => { setUserData({ ...userData, email: e.target.value }) }}
                 type="text"

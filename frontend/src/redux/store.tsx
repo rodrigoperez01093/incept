@@ -1,11 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit'
 import type { Action, ThunkAction } from '@reduxjs/toolkit'
-
-import { sessionReducer } from './features/reducers/session'
+import { applicationReducer, sessionReducer } from './features/reducers'
 
 export const store = configureStore({
   reducer: {
-    session: sessionReducer
+    session: sessionReducer,
+    application: applicationReducer
   }
 })
 
