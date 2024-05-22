@@ -14,7 +14,7 @@ interface ConversationProps {
 }
 
 const Conversation:React.FC<ConversationProps> = ({open, setOpen, messages}) => {
-  console.log(messages)
+
   const style = {
     position: 'absolute' as 'absolute',
     top: '50%',
@@ -34,8 +34,15 @@ const Conversation:React.FC<ConversationProps> = ({open, setOpen, messages}) => 
           onClose={() => setOpen(false)}
           aria-labelledby="modal-modal-title"
           aria-describedby="modal-modal-description"
+          className='relative'
           >
         <Box sx={style} className='scroll-bar'>
+            <button className='absolute top-4 right-4' onClick={() => setOpen(false)}>
+              <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M1 1L11 11" stroke="#272727" stroke-linecap="round"/>
+                <path d="M11 1L1.00001 11" stroke="#272727" stroke-linecap="round"/>
+              </svg>
+            </button>
             <Typography id="modal-modal-title" variant="h6" component="h2">
             {
               messages?.responses.map((resp:Responses,i:number) => (
