@@ -10,7 +10,7 @@ const Table:React.FC = () => {
   return (
     <>
     
-        <table className='min-w-[600px] w-full h-full border border-incept-black mb-2 text-center relative'>
+        <table className='min-w-[600px] w-full h-full border border-incept-black mb-2 xs:mt-2 2xl:mt-0 text-center flex-auto overflow-y-hidden relative'>
             <thead>
                 <tr className='w-full border border-incept-black bg-incept-primary text-incept-white xs:text-xs 2xl:text-[16px] h-[26px]'>
                     <th className='px-1'>Gestionado</th>
