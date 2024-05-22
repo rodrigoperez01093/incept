@@ -2,13 +2,17 @@
 @tailwind components;
 @tailwind utilities;
 
+.swal2-container.swal2-center>.swal2-popup{
+  border-radius: 20px;
+}
+
 .scroll-bar::-webkit-scrollbar {
-    width: 4px;
-    background: transparect;
+    width: 6px;
+    background: transparent;
   }
   
 .scroll-bar::-webkit-scrollbar-thumb{
-background: #DEE0E0;
+background: #032133;
 border-radius: 5px;
 }
 

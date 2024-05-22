@@ -2,6 +2,7 @@ import axios from "axios"
 import { endpoints, headers } from "../../../../../config/endpoints"
 import { Dispatch, SetStateAction } from "react"
 import { setInboundCase } from "../../../../../redux/features/actions/application"
+import { errorAlert } from "../../../../global/functions/alerts"
 
 export const getInboundCases = async(dispatch:Dispatch<SetStateAction<{}>>, dateRange:any) => {
     try {
@@ -10,5 +11,6 @@ export const getInboundCases = async(dispatch:Dispatch<SetStateAction<{}>>, date
         dispatch(setInboundCase(data.data))
     } catch (error) {
         console.log(error)
+        errorAlert('Ha ocurrido un error')
     }
 }

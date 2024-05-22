@@ -9,6 +9,7 @@ import Zoom from '@mui/material/Zoom';
 import { useNavigate } from "react-router-dom";
 import { resetSessionReducer } from "../../redux/features/actions/session";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
+import { Avatar } from '@mui/material';
 
 const Navbar = () => {
 
@@ -35,7 +36,7 @@ const Navbar = () => {
         }
     };
     
-    const settings = ['Home', 'Log out'];
+    const settings = ['Log out'];
 
     
     return (
@@ -49,9 +50,7 @@ const Navbar = () => {
                     { logged && 
                         <div className="flex flex-row items-center cursor-pointer">
                             <Tooltip title="Open settings" TransitionComponent={Zoom} placement="left" arrow >
-                                <div className="w-11 h-11 rounded-full mr-6 flex flex-col items-center justify-center bg-gradient-to-r from-stamm-gray to-stamm-white" onClick={handleOpenUserMenu}>
-                                    <span className="text-xl font-bold text-stamm-black">{`options`}</span>
-                                </div>
+                                <Avatar sx={{ bgcolor: 'deepOrange', mr: 4 }} alt="incept ai" onClick={handleOpenUserMenu} />
                             </Tooltip>
                             <Menu
                                 sx={{ mt: '60px' }}

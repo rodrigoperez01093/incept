@@ -11,6 +11,7 @@ const Dashboard:React.FC = () => {
 
   useEffect(() => {
     getClients(dispatch)
+    // eslint-disable-next-line
   }, [])
   
   return (
@@ -21,12 +22,11 @@ const Dashboard:React.FC = () => {
           <div className='w-full h-1/2 flex items-center px-5'>
             <h5>REPORTES</h5>
           </div>
-          <div className='w-full h-1/2 flex items-center justify-between px-5'>
-            <span>Detalles</span>
+          <div className='w-full h-1/2 flex items-center justify-center px-5'>
             <Filter />
           </div>
         </div>
-        <div className='w-full h-4/5 px-5'>
+        <div className='w-full h-4/5 px-5 pb-5 flex-auto'>
           <Table />
         </div>
       </div>
