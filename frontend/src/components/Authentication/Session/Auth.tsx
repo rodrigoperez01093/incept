@@ -2,6 +2,7 @@ import React, { ReactNode, useEffect, useState } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { useAppSelector } from '../../../redux/hooks'
 import Loader from '../../general/Loader/Loader'
+import { warningAlert } from '../../global/functions/alerts'
 
 interface AuthProps {
     children: ReactNode
@@ -30,12 +31,13 @@ const Auth:React.FC<AuthProps> = ({children}:Readonly<{ children: React.ReactNod
           localStorage.setItem(`logged`, 'false');
           localStorage.setItem(`user`, JSON.stringify({}));
           navigate('/auth/login');
+          warningAlert('Your session has expired. Please log in again')
         }
         setLoading(false)
       }
       fetchDData()
       // eslint-disable-next-line
-    }, [])
+    }, [location.pathname])
     
   if(loading){
     return <Loader />
