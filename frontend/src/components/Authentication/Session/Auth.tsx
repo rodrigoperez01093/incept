@@ -1,6 +1,7 @@
-import React, { ReactNode, useEffect } from 'react'
+import React, { ReactNode, useEffect, useState } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { useAppSelector } from '../../../redux/hooks'
+import Loader from '../../general/Loader/Loader'
 
 interface AuthProps {
     children: ReactNode
@@ -8,6 +9,7 @@ interface AuthProps {
 
 const Auth:React.FC<AuthProps> = ({children}:Readonly<{ children: React.ReactNode }>) => {
 
+    const [loading, setLoading] = useState<boolean>(true)
     const location = useLocation();
     const navigate = useNavigate();
     const { logged } = useAppSelector(state => state.session);
@@ -29,11 +31,15 @@ const Auth:React.FC<AuthProps> = ({children}:Readonly<{ children: React.ReactNod
           localStorage.setItem(`user`, JSON.stringify({}));
           navigate('/auth/login');
         }
+        setLoading(false)
       }
       fetchDData()
       // eslint-disable-next-line
     }, [])
     
+  if(loading){
+    return <Loader />
+  }
 
   return (
     <>
