@@ -9,9 +9,12 @@ const Dashboard:React.FC = () => {
 
   const dispatch = useAppDispatch()
   const { inboundCase } = useAppSelector(state => state.application)
+  const { logged } = useAppSelector(state => state.session)
 
   useEffect(() => {
-    getClients(dispatch)
+    if(logged){
+      getClients(dispatch)
+    }
     // eslint-disable-next-line
   }, [])
   

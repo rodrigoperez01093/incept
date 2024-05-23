@@ -17,19 +17,22 @@ const Auth:React.FC<AuthProps> = ({children}:Readonly<{ children: React.ReactNod
         const loggedLocal:string | null = localStorage.getItem('logged');
 
         if(!loggedLocal || loggedLocal === 'false'){
-            if(location.pathname === '/'){
-                navigate('auth/login');
+            if(location.pathname !== '/auth/login' && location.pathname !== '/'){
+              navigate('/auth/login');
+            }
+            else if(location.pathname === '/'){
+              navigate('/auth/login');
             }
         } 
         else if(!logged){
           localStorage.setItem(`logged`, 'false');
           localStorage.setItem(`user`, JSON.stringify({}));
-          navigate('auth/login');
+          navigate('/auth/login');
         }
       }
       fetchDData()
       // eslint-disable-next-line
-    }, [location.pathname])
+    }, [])
     
 
   return (
