@@ -18,8 +18,8 @@ const Filter:React.FC = () => {
     }, [dateRange])
     
   return (
-    <div className='h-full w-1/4 flex flex-row items-center'>
-      <div className='w-1/2 flex flex-col xs:px-2 2xl:px-4'>
+    <div className='h-full sm:w-1/4 xs:w-full flex flex-row items-center justify-center'>
+      <div className='xs:w-1/3 sm:w-1/2 flex flex-col xs:px-2 2xl:px-4'>
         <label className='text-xs font-semibold'>Desde</label>
         <input 
             type="date" 
@@ -28,7 +28,7 @@ const Filter:React.FC = () => {
             onChange={(e) => setDateRange({...dateRange, from: e.target.value})}
         />
       </div>
-      <div className='w-1/2 flex flex-col px-4'>
+      <div className='xs:w-1/3 2xl:w-1/2 flex flex-col xs:px-2 2xl:px-4'>
         <label className='text-xs font-semibold'>Hasta</label>
         <input 
             type="date" 

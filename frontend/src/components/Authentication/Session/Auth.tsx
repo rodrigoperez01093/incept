@@ -1,5 +1,6 @@
 import React, { ReactNode, useEffect } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
+import { useAppSelector } from '../../../redux/hooks'
 
 interface AuthProps {
     children: ReactNode
@@ -7,22 +8,28 @@ interface AuthProps {
 
 const Auth:React.FC<AuthProps> = ({children}:Readonly<{ children: React.ReactNode }>) => {
 
-    const location = useLocation()
-    const navigate = useNavigate()
+    const location = useLocation();
+    const navigate = useNavigate();
+    const { logged } = useAppSelector(state => state.session);
 
     useEffect(() => {
       const fetchDData = () => {
-        const logged:string | null = localStorage.getItem('logged')
+        const loggedLocal:string | null = localStorage.getItem('logged');
 
-        if(!logged || logged === 'false'){
+        if(!loggedLocal || loggedLocal === 'false'){
             if(location.pathname === '/'){
-                navigate('auth/login')
+                navigate('auth/login');
             }
+        } 
+        else if(!logged){
+          localStorage.setItem(`logged`, 'false');
+          localStorage.setItem(`user`, JSON.stringify({}));
+          navigate('auth/login');
         }
       }
       fetchDData()
       // eslint-disable-next-line
-    }, [])
+    }, [location.pathname])
     
 
   return (

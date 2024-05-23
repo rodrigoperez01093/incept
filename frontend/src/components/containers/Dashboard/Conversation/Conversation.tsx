@@ -20,8 +20,7 @@ const Conversation:React.FC<ConversationProps> = ({open, setOpen, messages}) => 
     top: '50%',
     left: '50%',
     transform: 'translate(-50%, -50%)',
-    width: 600,
-    maxHeight: 700,
+    maxHeight: 500,
     bgcolor: 'background.paper',
     boxShadow: 24,
     p: 4,
@@ -36,11 +35,11 @@ const Conversation:React.FC<ConversationProps> = ({open, setOpen, messages}) => 
           aria-describedby="modal-modal-description"
           className='relative'
           >
-        <Box sx={style} className='scroll-bar'>
+        <Box sx={style} className='scroll-bar xs:w-[90%] sm:w-[400px] 2xl:w-[600px]'>
             <button className='absolute top-4 right-4' onClick={() => setOpen(false)}>
               <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M1 1L11 11" stroke="#272727" stroke-linecap="round"/>
-                <path d="M11 1L1.00001 11" stroke="#272727" stroke-linecap="round"/>
+                <path d="M1 1L11 11" stroke="#272727" strokeLinecap="round"/>
+                <path d="M11 1L1.00001 11" stroke="#272727" strokeLinecap="round"/>
               </svg>
             </button>
             <Typography id="modal-modal-title" variant="h6" component="h2">

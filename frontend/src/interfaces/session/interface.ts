@@ -1,9 +1,11 @@
-export interface Session {
-    logged?: boolean
-    user: any
-}
+import { User } from "../general"
 
-export interface User {
+export interface LoginUser {
     email: string,
     password: string
+}
+
+export interface Session {
+    logged: boolean
+    user: User | null
 }

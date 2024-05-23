@@ -5,14 +5,15 @@ import { useNavigate } from 'react-router-dom';
 import { CircularProgress } from '@mui/material';
 import { useAppDispatch } from '../../../redux/hooks';
 import { setSession, setUser } from '../../../redux/features/actions/session';
-import { User } from '../../../interfaces/session/interface';
+import { LoginUser } from '../../../interfaces/session/interface';
+import { errorAlert } from '../../global/functions/alerts';
 
 const Login: React.FC = () => {
 
   const navigate = useNavigate()
   const dispatch = useAppDispatch()
 
-  const [userData, setUserData] = useState<User>({
+  const [userData, setUserData] = useState<LoginUser>({
     email: '',
     password: '',
   });
@@ -31,9 +32,10 @@ const Login: React.FC = () => {
           setLoaginFlag(false)
           navigate('/')
       }
-    } catch (error) {
+    } catch (error:any) {
       console.log(error)
       setLoaginFlag(false)
+      errorAlert(error?.response?.data?.non_field_errors || 'Ha ocurrido un error')
     }
   }
 

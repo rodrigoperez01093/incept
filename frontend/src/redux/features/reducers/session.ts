@@ -4,7 +4,7 @@ import { Session } from '../../../interfaces/session/interface'
 
 const initialState: Session = {
   logged: false,
-  user: {}
+  user: null
 }
 
 export const sessionReducer = createReducer(initialState, builder => {

@@ -16,18 +16,18 @@ const Dashboard:React.FC = () => {
   }, [])
   
   return (
-    <div className='w-full h-full pt-[87px] flex flex-row'>
+    <div className='w-full h-full pt-[87px] flex xs:flex-col sm:flex-row'>
       <SideBar />
-      <div className='w-full h-full'>
+      <div className='w-full h-full overflow-y-auto'>
         <div className='w-full h-1/5'>
-          <div className='w-full h-1/2 flex items-center px-5'>
-            <h5 className='font-semibold xs:text-md 2xl:text-xl'>{`REPORTES (${inboundCase?.results?.length})`}</h5>
+          <div className='w-full h-1/2 flex items-center xs:justify-center sm:justify-start px-5'>
+            <h5 className='font-semibold xs:text-md 2xl:text-xl'>{`REPORTES ${inboundCase?.results?.length > 0 ? `(${inboundCase?.results?.length})` : ''}`}</h5>
           </div>
-          <div className='w-full h-1/2 flex items-center justify-center px-5'>
+          <div className='w-full h-1/2 flex items-center justify-center 2xl:px-5'>
             <Filter />
           </div>
         </div>
-        <div className='w-full h-4/5 overflow-y-auto px-5 pb-5 flex-auto'>
+        <div className='w-full h-4/5 px-5 pb-5'>
           <Table />
         </div>
       </div>

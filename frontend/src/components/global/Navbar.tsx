@@ -10,6 +10,7 @@ import { useNavigate } from "react-router-dom";
 import { resetSessionReducer } from "../../redux/features/actions/session";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 import { Avatar } from '@mui/material';
+import { resetApplicationReducer } from '../../redux/features/actions/application';
 
 const Navbar = () => {
 
@@ -25,9 +26,10 @@ const Navbar = () => {
         setAnchorElUser(null);
     };
   
-    const handleSelectMenuOption = (item:any) => {
+    const handleSelectMenuOption = (item:string) => {
         if(item === 'Log out') {
             dispatch(resetSessionReducer());
+            dispatch(resetApplicationReducer());
             localStorage.setItem('logged', 'false')
             localStorage.setItem('user', '')
             navigate("/auth/login");
@@ -40,7 +42,7 @@ const Navbar = () => {
 
     
     return (
-        <div className="fixed bg-incept-black text-incept-white min-w-full top-0 left-0 z-10 h-[87px] shadow-xl">
+        <div className="fixed bg-incept-black text-incept-white min-w-full top-0 left-0 z-10 xs:h-[65px] 2xl:h-[87px] shadow-xl">
                 <div className="flex h-full lg:bg-stamm-black items-center justify-between">
                     <div className="flex flex-row">
                         <div className="ml-6 text-xl">
