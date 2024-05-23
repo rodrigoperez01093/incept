@@ -10,7 +10,7 @@ export const getClients = async(dispatch:Dispatch) => {
         dispatch(setClients(data))
     } catch (error:any) {
         console.log(error)
-        if(error.response.status === 401) return errorAlert(`${error?.response?.data?.detail} Por favor, vuelva a iniciar sesión`)
+        if(error?.response?.status === 401) return errorAlert(`${error?.response?.data?.detail} Por favor, vuelva a iniciar sesión`)
         errorAlert('Ha ocurrido un error')
     }
 }
