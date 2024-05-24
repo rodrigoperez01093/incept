@@ -101,7 +101,7 @@ const Table:React.FC = () => {
                     )
                 })
                 :
-                <span className='absolute top-[30%] xs:text-[11px] 2xl:text-lg w-full h-[25px]'>
+                <span className='absolute top-[30%] left-0 xs:text-[11px] 2xl:text-lg w-full h-[25px]'>
                     <p>No hay información para mostrar</p>
                 </span>
             }

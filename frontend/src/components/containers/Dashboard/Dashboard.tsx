@@ -18,7 +18,7 @@ const Dashboard:React.FC = () => {
   return (
     <div className='w-full h-full pt-[87px] flex xs:flex-col sm:flex-row'>
       <SideBar />
-      <div className='w-full h-full overflow-y-auto'>
+      <div className='w-full h-full overflow-y-auto sm:overflow-x-hidden'>
         <div className='w-full h-1/5'>
           <div className='w-full h-1/2 flex items-center xs:justify-center sm:justify-start px-5'>
             <h5 className='font-semibold xs:text-md 2xl:text-xl'>{`REPORTES ${inboundCase?.results?.length > 0 ? `(${inboundCase?.results?.length})` : ''}`}</h5>
